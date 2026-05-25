@@ -83,6 +83,3 @@ $ e(t) = T_set − T_out $
 - Matplotlib (visualization)
 
 ---
-
-## Project Structure
-smart-heat-exchanger-digital-twin/ │ ├── notebooks/          # Theory, methodology, analysis ├── simulations/       # DWSIM files (conventional model) ├── src/               # Python control system ├── data/              # Simulation outputs ├── results/           # Graphs and comparison outputs ├── docs/              # Reports and diagrams └──
