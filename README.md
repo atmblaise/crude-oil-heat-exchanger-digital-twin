@@ -1,158 +1,160 @@
-# Crude Oil Preheat Heat Exchanger Digital Twin
+# Crude Oil Preheat Train Digital Twin System
 
 ## Overview
 
-This project presents a **first-principles digital twin** of a refinery crude oil preheat shell-and-tube heat exchanger. The system combines **process simulation (DWSIM)** with a **Python-based dynamic modeling layer** to replicate real industrial behavior including fouling, sensor noise, and process disturbances.
+This project is a physics-based digital twin system for modeling and analyzing heat exchanger networks in crude oil preheat trains.
 
-The goal is to bridge the gap between **steady-state process simulation** and **real-time industrial operation**, aligning with modern **Industry 4.0 digitalization practices**.
-
----
-
-## Industrial Context
-
-In petroleum refineries, crude oil is preheated using heat recovered from hot process streams before entering the distillation unit. This reduces furnace fuel consumption and improves energy efficiency.
-
-However, real systems suffer from:
-
-* Heat exchanger fouling
-* Sensor noise and drift
-* Flow and temperature disturbances
-* Performance degradation over time
-
-This project models these effects to create a realistic operational digital twin.
+It simulates thermal energy transfer, evaluates system efficiency, and models performance degradation due to fouling. The system is designed as a modular engineering software platform combining thermodynamic modeling, system simulation, and industrial-style visualization.
 
 ---
 
-## Objectives
+## Problem Statement
 
-* Develop a steady-state heat exchanger model using **DWSIM**
-* Implement first-principles heat transfer equations
-* Simulate fouling and degradation effects over time
-* Introduce sensor noise and measurement uncertainty
-* Build a Python-based dynamic digital twin
-* Create performance monitoring and data logging system
+Heat exchanger networks in industrial crude oil systems degrade over time due to fouling and operational inefficiencies. This leads to:
+
+- Reduced heat recovery efficiency  
+- Increased fuel consumption in furnaces  
+- Poor visibility of system-wide performance  
+- Delayed detection of equipment degradation  
+
+Existing tools are often either too simplified or too complex for practical system-level analysis.
+
+This project addresses the gap by providing a structured, modular digital twin for heat exchanger networks.
+
+---
+
+## System Objectives
+
+- Model heat exchanger networks as interconnected thermal systems  
+- Simulate steady-state heat transfer behavior  
+- Represent performance degradation using fouling models  
+- Compute system-level energy recovery and efficiency  
+- Provide SCADA-style visualization concepts for industrial interpretation  
 
 ---
 
 ## System Architecture
 
-The system is composed of three layers:
+The system is designed in layered form:
 
-### 1. Process Simulation Layer (DWSIM)
-
-* Steady-state shell-and-tube heat exchanger
-* Thermodynamic property modeling
-* Energy balance validation
-
-### 2. Digital Twin Layer (Python)
-
-* Time-dependent simulation
-* Fouling resistance evolution
-* Sensor noise modeling
-* Control logic simulation
-
-### 3. Data & Visualization Layer
-
-* SCADA-style monitoring (Streamlit planned)
-* Performance tracking
-* Historical data logging
+- **Data Layer** → Process streams and operating conditions  
+- **Physics Layer** → Heat exchanger + fouling models  
+- **Simulation Layer** → System execution flow  
+- **Analysis Layer** → Performance evaluation and insights  
+- **Interface Layer** → SCADA-style visualization (design stage)
 
 ---
 
-## Key Engineering Models
-This project is based on fundamental heat transfer and thermodynamic principles commonly used in refinery heat exchanger analysis.
+## Key Features
 
-### Energy Balance
-The system assumes conservation of mass under steady-state conditions. The total mass entering the heat exchanger equals the total mass leaving it for both hot and cold streams. This ensures no accumulation or loss of material within the system.
-
----
-
-### Heat Transfer Equation
-The heat exchanger operates based on conservation of energy. The thermal energy lost by the hot stream is equal to the energy gained by the cold stream, assuming no heat losses to the environment. This relationship defines the overall heat duty of the system.
+- Heat exchanger energy balance modeling  
+- LMTD-based thermal analysis (conceptual design stage)  
+- Fouling-based performance degradation simulation  
+- Heat exchanger network simulation framework  
+- System-level energy efficiency evaluation  
+- Modular architecture for future industrial expansion  
 
 ---
 
-### Fouling Model
-Over time, unwanted material deposits accumulate on the heat transfer surfaces. This fouling layer increases thermal resistance, reduces heat transfer efficiency, and gradually decreases the performance of the exchanger. The model captures this as a time-dependent degradation process.
-
----
-
-### Sensor Model
-In real industrial systems, measurements are never perfectly accurate. Temperature and flow readings are affected by noise, calibration errors, and signal disturbances. The model introduces controlled uncertainty to replicate real sensor behavior in plant conditions.
-
----
-
-## Dynamic System Behavior
-
-Unlike steady-state simulations, the digital twin introduces time dependence. System performance evolves over time due to fouling, disturbances, and control actions, allowing the model to reflect realistic refinery operating conditions.
-
----
-
-## Tools & Technologies
-
-* DWSIM (Process Simulation)
-* Python (NumPy, Pandas, SciPy)
-* LaTeX (Engineering report writing)
-* Git & GitHub (Version control)
-* Streamlit (planned SCADA-style dashboard)
-
----
 
 ## Project Structure
 
 ```
-crude-oil-heat-exchanger-digital-twin/
+crude-oil-preheat-train-digital-twin/
 │
-├── paper/              # LaTeX engineering report
-├── dwsim/             # Process simulation model
-├── python/            # Digital twin engine
-├── data/              # Simulation datasets
-├── figures/           # Diagrams and plots
 ├── README.md
-└── requirements.txt
+├── LICENSE
+├── requirements.txt
+├── .gitignore
+│
+├── docs/
+│   └── design-notebook/
+│       ├── 00_overview.md
+│       ├── 01_problem_definition.md
+│       ├── 02_system_architecture.md
+│       ├── physics_models/
+│       ├── system_design/
+│       ├── ui_design/
+│       ├── experiments/
+│       └── future_work.md
+│
+├── src/
+│   ├── physics/
+│   ├── simulation/
+│   ├── analysis/
+│   └── utils/
+│
+├── data/
+│   ├── raw/
+│   ├── processed/
+│   └── examples/
+│
+├── app/
+│   ├── api/
+│   └── frontend/
+│
+├── notebooks/
+│   └── validation/
+│
+└── tests/
 ```
 
 ---
 
-## Expected Outcomes
 
-* Realistic heat exchanger performance simulation
-* Fouling impact visualization over time
-* Sensor behavior under uncertainty
-* Industrial-style performance monitoring system
-* Foundation for predictive maintenance modeling
+## Current Status
 
----
+This project is currently in the **design and architecture phase**.
 
-## Engineering Basis
+Completed:
+- System design documentation  
+- Physics modeling framework definition  
+- Simulation workflow design  
+- SCADA-style interface specification  
+- Test case definition  
 
-This project is grounded in:
-
-* First-law thermodynamics
-* Heat transfer theory
-* Shell-and-tube exchanger design principles
-* Fouling resistance modeling
-* Digital twin architecture principles (Industry 4.0)
+Next Phase:
+- Python-based simulation engine implementation  
+- Jupyter-based model validation  
+- FastAPI backend development  
+- SCADA dashboard implementation  
 
 ---
 
-## Future Work
+## Technology Direction
 
-* Integration with real-time SCADA data
-* Machine learning-based fouling prediction
-* Multi-exchanger heat integration network
-* Deployment as web-based industrial dashboard
+Planned stack:
 
----
-
-## Author
-
-**Blaise Atambo**
-Chemical and Process Engineering
-Nairobi, Kenya
+- Python (core simulation engine)  
+- NumPy / SciPy (numerical computation)  
+- FastAPI (backend services)  
+- JavaScript / HTML (SCADA dashboard UI)  
+- Jupyter Notebook (model validation and testing)  
 
 ---
 
-## Note
+## Long-Term Vision
 
-This repository is part of a broader portfolio of engineering digital twin systems focused on industrial simulation, process optimization, and energy systems modeling.
+This system is designed as the foundation of a scalable industrial digital twin platform capable of expanding into:
+
+- HVAC system optimization  
+- Cement plant waste heat recovery systems  
+- Industrial boiler and furnace optimization  
+- Multi-plant energy efficiency platforms  
+
+---
+
+## License
+
+This project is licensed under the MIT License.
+
+---
+
+## Author Intent
+
+This project is developed as an engineering software portfolio demonstrating:
+
+- Industrial process modeling  
+- Digital twin architecture design  
+- Thermal system simulation  
+- Engineering software development practices  
